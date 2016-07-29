@@ -5,6 +5,7 @@
     "description": "Simple overlay instructions for your apps.",
     "license": "Apache",
     "dependencies": {
-        "jQuery": ">=1.6.0"
+        "jQuery": ">=1.6.0",
+         "angular-help-overlay": "0.1.2"
     }
 }
