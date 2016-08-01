@@ -63,7 +63,14 @@ define(['jquery'], function( jQuery ){
           this.$el.find('.introjs-fixParent').removeClass('introjs-fixParent');
           this.$el.find('.chardinjs-show-element').removeClass('chardinjs-show-element');
           this.$el.find('.chardinjs-relative-position').removeClass('chardinjs-relative-position');
+
           this.$el.find('.flipped').removeClass('flipped');
+          this.$el.find('*').removeAttr('data-intro');
+          this.$el.find('*').removeAttr('data-position');
+          this.$el.find('*').removeAttr('data-icon-direction');
+
+
+
           if (window.removeEventListener) {
             window.removeEventListener("keydown", this._onKeyDown, true);
           } else {
@@ -135,13 +142,13 @@ define(['jquery'], function( jQuery ){
               target_element_position = this._get_offset(element);
               target_height = target_element_position.height;
               my_height = $(tooltip_layer).height();
-              tooltip_layer.style.top = "" + ((target_height / 2) - (tooltip_layer_position.height / 2)) + "px";
+              tooltip_layer.style.top = "" + ((target_height / 2) - (tooltip_layer_position.height / 2) - 30) + "px";
           }
           switch (this._get_position(element)) {
             case "left":
               return tooltip_layer.style.left = "-" + (tooltip_layer_position.width + 40) + "px";
             case "right":
-              return tooltip_layer.style.right = "-" + (tooltip_layer_position.width + tooltip_layer_position.width / 2 - 20) + "px";
+              return tooltip_layer.style.right = "-" + (tooltip_layer_position.width -  20) + "px";
             case "bottom":
               return tooltip_layer.style.bottom = "-" + tooltip_layer_position.height + "px";
             case "top":
@@ -191,6 +198,7 @@ define(['jquery'], function( jQuery ){
           helper_layer.appendChild(tooltip_layer);
           this._place_tooltip(element);
           element.className += " chardinjs-show-element";
+          current_element_position = "";
           current_element_position = "";
           if (element.currentStyle) {
             current_element_position = element.currentStyle["position"];
